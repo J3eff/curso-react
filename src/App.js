@@ -3,11 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props); // Método da classe base 
+
+    this.state = {
+      showImage: false,
+    };
+  }
+
+  toggle = () => {
+    this.setState({
+      showImage: !this.state.showImage,
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+
+          <button type="button" onClick={this.toggle}>
+            {this.state.showImage ? 'Esconder' : 'Mostrar'}
+          </button>
+
+          {this.state.showImage && (
+            <img src={logo} className="App-logo" alt="logo" />
+          )}
+
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
@@ -23,6 +45,8 @@ class App extends Component {
       </div>
     )
   }
+
+
 }
 
 export default App;
