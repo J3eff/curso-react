@@ -1,51 +1,43 @@
-import React, { Component } from 'react';
+  // HOOKS -> São funções que atraves dele consegue se conenctar a API interna do React e acessar uma funcionalidade especifica.
+  // Por padrão todos os Hooks utilizam o use no começo. 
+
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props); // Método da classe base 
+const App = () => { 
+  const [showImage, setShowImage] = useState(false);
 
-    this.state = {
-      showImage: false,
-    };
+  const toggle = () => {
+    setShowImage(!showImage)
   }
 
-  toggle = () => {
-    this.setState({
-      showImage: !this.state.showImage,
-    });
-  }
+  return (
+    <div className="App">
+      <header className="App-header">
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
+        <button type="button" onClick={toggle}>
+          {showImage ? 'Esconder' : 'Mostrar'}
+        </button>
 
-          <button type="button" onClick={this.toggle}>
-            {this.state.showImage ? 'Esconder' : 'Mostrar'}
-          </button>
+        {showImage && (
+          <img src={logo} className="App-logo" alt="logo" />
+        )}
 
-          {this.state.showImage && (
-            <img src={logo} className="App-logo" alt="logo" />
-          )}
-
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    )
-  }
-
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  )
 
 }
 
